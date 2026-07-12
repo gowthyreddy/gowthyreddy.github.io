@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gowtham Reddy Sanjamala — AI/ML Engineer</title>
+<meta name="description" content="Portfolio of Gowtham Reddy Sanjamala — AI/ML engineer specializing in LLM systems, MLOps, and data engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F0EEE6;
+    --surface: #FAF9F5;
+    --border: #DED9CB;
+    --text: #1F1E1D;
+    --muted: #6E675B;
+    --terra: #C15F3C;
+    --terra-soft: #D97757;
+    --olive: #6C7F4B;
+    --ochre: #A67C2E;
+    --grad: linear-gradient(100deg, #D97757, #C15F3C 55%, #A6472A);
+    --serif: "Lora", Georgia, serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  ::selection { background: #d9775755; }
+  a { color: var(--terra); text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; position: relative; }
+
+  /* ---- soft warm background ---- */
+  .orbs { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(100px); opacity: .5; }
+  .orb.o1 { width: 500px; height: 500px; background: #EBD9C3; top: -160px; left: -120px; animation: drift1 26s ease-in-out infinite alternate; }
+  .orb.o2 { width: 440px; height: 440px; background: #E7CDBB; top: 32%; right: -180px; animation: drift2 32s ease-in-out infinite alternate; }
+  .orb.o3 { width: 400px; height: 400px; background: #DDE2CB; bottom: -140px; left: 28%; animation: drift3 38s ease-in-out infinite alternate; }
+  @keyframes drift1 { to { transform: translate(140px, 120px) scale(1.15); } }
+  @keyframes drift2 { to { transform: translate(-120px, -140px) scale(1.2); } }
+  @keyframes drift3 { to { transform: translate(-100px, -80px) scale(.9); } }
+  .grid-bg {
+    position: fixed; inset: 0; z-index: -1;
+    background-image: linear-gradient(rgba(31,30,29,.045) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(31,30,29,.045) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 60% at 50% 0%, black 40%, transparent 100%);
+  }
+
+  /* ---- nav ---- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(240,238,230,.8); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  nav .logo { font-family: var(--serif); font-weight: 700; font-size: 1.15rem; color: var(--text); }
+  nav .logo em { font-style: normal; color: var(--terra); }
+  nav .links a { color: var(--muted); margin-left: 24px; font-size: .92rem; position: relative; }
+  nav .links a::after {
+    content: ""; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px;
+    background: var(--terra); border-radius: 2px; transition: width .25s ease;
+  }
+  nav .links a:hover { color: var(--text); }
+  nav .links a:hover::after { width: 100%; }
+
+  /* ---- hero ---- */
+  header { padding: 110px 0 80px; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: .78rem; color: var(--olive);
+    border: 1px solid rgba(108,127,75,.35); background: rgba(108,127,75,.08);
+    padding: 6px 14px; border-radius: 999px; margin-bottom: 26px;
+  }
+  .kicker .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--olive); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(108,127,75,.45); } 50% { box-shadow: 0 0 0 7px rgba(108,127,75,0); } }
+  header h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.4rem, 6vw, 4.1rem); line-height: 1.1; font-weight: 600; letter-spacing: -.01em;
+  }
+  header h1 .grad {
+    background: var(--grad); background-size: 200% auto;
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    animation: shine 7s linear infinite; font-style: italic;
+  }
+  @keyframes shine { to { background-position: 200% center; } }
+  header .sub { color: var(--muted); font-size: 1.12rem; margin-top: 22px; max-width: 660px; }
+  header .sub b { color: var(--text); font-weight: 600; }
+  .hero-links { margin-top: 34px; display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 10px;
+    font-weight: 600; font-size: .95rem; color: var(--text);
+    border: 1px solid var(--border); background: var(--surface);
+    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .btn:hover { transform: translateY(-2px); border-color: var(--terra); box-shadow: 0 8px 26px -10px rgba(193,95,60,.5); color: var(--terra); }
+  .btn.primary { background: var(--terra); color: #FAF9F5; border-color: var(--terra); }
+  .btn.primary:hover { background: var(--terra-soft); color: #FAF9F5; box-shadow: 0 8px 30px -8px rgba(193,95,60,.6); }
+
+  /* ---- sections ---- */
+  section { padding: 70px 0; }
+  h2 { font-family: var(--serif); font-size: 2rem; font-weight: 600; margin-bottom: 8px; }
+  h2 .hash { color: var(--terra); margin-right: 6px; }
+  .sec-sub { color: var(--muted); margin-bottom: 34px; font-size: .98rem; }
+
+  /* ---- filters ---- */
+  .filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+  .filters button {
+    background: var(--surface); color: var(--muted); border: 1px solid var(--border);
+    padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: .88rem;
+    font-family: inherit; font-weight: 500;
+    transition: all .2s ease;
+  }
+  .filters button:hover { color: var(--terra); border-color: var(--terra); transform: translateY(-1px); }
+  .filters button.active { background: var(--terra); color: #FAF9F5; border-color: var(--terra); font-weight: 600; }
+
+  /* ---- project cards ---- */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 20px; }
+  .card {
+    position: relative; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    padding: 26px; display: flex; flex-direction: column; gap: 13px;
+    box-shadow: 0 1px 3px rgba(31,30,29,.05);
+    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 0%), rgba(217,119,87,.1), transparent 65%);
+    opacity: 0; transition: opacity .25s; pointer-events: none;
+  }
+  .card:hover { transform: translateY(-5px); border-color: rgba(193,95,60,.5); box-shadow: 0 14px 34px -16px rgba(140,90,60,.35); }
+  .card:hover::before { opacity: 1; }
+  .card .cat { font-family: var(--mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 600; }
+  .card[data-cat="llm"] .cat { color: var(--terra); }
+  .card[data-cat="ml"]  .cat { color: var(--olive); }
+  .card[data-cat="de"]  .cat { color: var(--ochre); }
+  .card h3 { font-family: var(--serif); font-size: 1.18rem; line-height: 1.35; font-weight: 600; }
+  .card ul { padding-left: 18px; color: var(--muted); font-size: .9rem; display: grid; gap: 7px; }
+  .card ul li::marker { color: var(--terra); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 8px; }
+  .tags span {
+    font-family: var(--mono); font-size: .7rem;
+    background: rgba(31,30,29,.04); border: 1px solid var(--border); color: var(--muted);
+    padding: 3px 10px; border-radius: 6px; transition: all .2s;
+  }
+  .card:hover .tags span { border-color: rgba(193,95,60,.4); color: var(--text); }
+  .card .repo { font-size: .88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+  .card .repo:hover { text-decoration: underline; }
+
+  /* ---- experience ---- */
+  .xp { position: relative; padding-left: 32px; display: grid; gap: 40px; }
+  .xp::before {
+    content: ""; position: absolute; left: 5px; top: 4px; bottom: 4px; width: 2px;
+    background: linear-gradient(180deg, var(--terra-soft), var(--terra), var(--ochre));
+    border-radius: 2px;
+  }
+  .xp-item { position: relative; }
+  .xp-item::before {
+    content: ""; position: absolute; left: -32px; top: 7px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--terra); box-shadow: 0 0 0 4px rgba(193,95,60,.18);
+  }
+  .xp-item .role { font-family: var(--serif); font-weight: 700; font-size: 1.12rem; }
+  .xp-item .org { color: var(--terra); font-size: .95rem; }
+  .xp-item .when { font-family: var(--mono); color: var(--muted); font-size: .8rem; margin-bottom: 10px; }
+  .xp-item ul { padding-left: 18px; color: var(--muted); font-size: .92rem; display: grid; gap: 6px; }
+  .xp-item ul li::marker { color: var(--ochre); }
+
+  /* ---- skills ---- */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 18px; }
+  .skill-group {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px;
+    box-shadow: 0 1px 3px rgba(31,30,29,.05);
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .skill-group:hover { transform: translateY(-3px); box-shadow: 0 10px 26px -14px rgba(140,90,60,.3); }
+  .skill-group:nth-child(3n+1):hover { border-color: var(--olive); }
+  .skill-group:nth-child(3n+2):hover { border-color: var(--terra); }
+  .skill-group:nth-child(3n):hover   { border-color: var(--ochre); }
+  .skill-group h3 { font-size: .92rem; margin-bottom: 8px; font-family: var(--mono); }
+  .skill-group:nth-child(3n+1) h3 { color: var(--olive); }
+  .skill-group:nth-child(3n+2) h3 { color: var(--terra); }
+  .skill-group:nth-child(3n) h3   { color: var(--ochre); }
+  .skill-group p { color: var(--muted); font-size: .9rem; }
+
+  /* ---- education ---- */
+  .edu { display: grid; gap: 16px; }
+  .edu-item {
+    background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--terra);
+    border-radius: 12px; padding: 20px 24px; box-shadow: 0 1px 3px rgba(31,30,29,.05);
+    transition: transform .2s;
+  }
+  .edu-item:hover { transform: translateX(4px); }
+  .edu-item .deg { font-family: var(--serif); font-weight: 700; }
+  .edu-item .meta { color: var(--muted); font-size: .9rem; }
+
+  /* ---- footer ---- */
+  footer { border-top: 1px solid var(--border); padding: 70px 0 80px; text-align: center; position: relative; }
+  footer h2 { display: inline-block; }
+  footer p { color: var(--muted); max-width: 520px; margin: 10px auto 30px; }
+  footer .foot-note { font-family: var(--mono); font-size: .75rem; margin-top: 50px; margin-bottom: 0; }
+
+  /* ---- scroll reveal ---- */
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+  @media (max-width: 640px) {
+    nav .links a { margin-left: 14px; font-size: .82rem; }
+    header { padding: 70px 0 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="orbs" aria-hidden="true">
+  <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+</div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap">
+    <span class="logo">gowtham<em>.ai</em></span>
+    <span class="links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </span>
+  </div>
+</nav>
+
+<header class="wrap">
+  <span class="kicker"><span class="dot"></span>open to AI/ML &amp; data roles</span>
+  <h1>Gowtham Reddy<br>Sanjamala<br><span class="grad">AI / ML Engineer</span></h1>
+  <p class="sub">M.S. Data Science candidate at <b>Indiana University</b> (GPA 3.9) building <b>LLM systems</b>, <b>production ML pipelines</b>, and <b>real-time data infrastructure</b> — from fine-tuning models on A100s to deploying them serverless with full monitoring.</p>
+  <div class="hero-links">
+    <a class="btn primary" href="#projects">View Projects ↓</a>
+    <a class="btn" href="https://github.com/gowthyreddy" target="_blank" rel="noopener">GitHub</a>
+    <a class="btn" href="https://www.linkedin.com/in/gsanjamala" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</header>
+
+<section id="projects" class="wrap">
+  <h2 class="reveal"><span class="hash">#</span>Projects</h2>
+  <p class="sec-sub reveal">13 projects across LLM engineering, production ML, analytics, and data pipelines.</p>
+  <div class="filters reveal" id="filters">
+    <button class="active" data-f="all">All</button>
+    <button data-f="llm">LLM &amp; GenAI</button>
+    <button data-f="ml">ML &amp; MLOps</button>
+    <button data-f="de">Data Engineering</button>
+  </div>
+  <div class="grid" id="projectGrid">
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>Production ML Monitoring &amp; Automated Retraining — Fraud Detection</h3>
+      <ul>
+        <li>Deployed a fraud model (XGBoost → ONNX, 3ms p95) as a serverless FastAPI API on AWS Lambda with Docker, MLflow registry, and CI/CD.</li>
+        <li>Replayed 600K transactions through 3-layer drift monitoring (Evidently, NannyML); drift alerts showed only 44% precision while the model silently lost 3 AUC points.</li>
+        <li>Automated retrain → test gate → deploy via GitHub Actions; monthly retraining recovered +2.6 AUC points.</li>
+      </ul>
+      <div class="tags"><span>XGBoost</span><span>ONNX</span><span>FastAPI</span><span>AWS Lambda</span><span>MLflow</span><span>Evidently</span><span>NannyML</span><span>GitHub Actions</span></div>
+      <a class="repo" href="https://github.com/gowthyreddy/Fraud_detection_mlops" target="_blank" rel="noopener">View on GitHub →</a>
+    </article>
+
+    <article class="card reveal" data-cat="llm">
+      <span class="cat">LLM &amp; GenAI</span>
+      <h3>Cost-Adaptive Multi-Agent Document Analysis</h3>
+      <ul>
+        <li>Adaptive document Q&amp;A that routes each question to the cheapest pipeline able to answer it, reserving multi-step reasoning for complex queries.</li>
+        <li>3-tier RAG pipeline with FAISS vector search and a ReAct agent, running fully on local open-source LLMs (Ollama) — zero API cost, full data privacy.</li>
+        <li>ML classifier auto-routes questions by complexity in real time; answers validated with automated eval metrics and served via FastAPI.</li>
+      </ul>
+      <div class="tags"><span>LangGraph</span><span>FAISS</span><span>Ollama</span><span>FastAPI</span><span>LangSmith</span><span>DeepEval</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="llm">
+      <span class="cat">LLM &amp; GenAI</span>
+      <h3>Domain Fine-tuning with FlyLoRA on Medical Q&amp;A</h3>
+      <ul>
+        <li>Implemented FlyLoRA (NeurIPS '25) as a custom HuggingFace PEFT layer, cutting trainable parameters 35% (16.3M vs 25.2M) while matching a standard-LoRA baseline.</li>
+        <li>Fine-tuned Phi-3.5-mini (3.8B) on 12K medical Q&amp;A pairs with 4-bit QLoRA on a single A100 via Slurm (~35 min/run).</li>
+        <li>Rank × sparsity ablations tracked in MLflow; adapter correctness validated with unit tests before full training.</li>
+      </ul>
+      <div class="tags"><span>PyTorch</span><span>PEFT</span><span>QLoRA</span><span>MLflow</span><span>Slurm / A100</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="llm">
+      <span class="cat">LLM &amp; GenAI</span>
+      <h3>Iterative Prompt Optimization via Response Evolution Tracking</h3>
+      <ul>
+        <li>REVOLVE-inspired pipeline where a GPT-4o meta-optimizer rewrites text-to-SQL prompts using the full history of prior attempts — 74% execution accuracy on the Spider benchmark.</li>
+        <li>LLM evaluation framework runs generated SQL against real databases; caught the optimizer overfitting to a weaker string-match metric (+15 pts after fix).</li>
+        <li>Optimization history persisted in PostgreSQL with a Streamlit dashboard for live convergence tracking; full experiments under $3.</li>
+      </ul>
+      <div class="tags"><span>OpenAI</span><span>LangChain</span><span>PostgreSQL</span><span>Streamlit</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="llm">
+      <span class="cat">LLM &amp; GenAI</span>
+      <h3>CommitMessenger — AI Commit Message Generator</h3>
+      <ul>
+        <li>VS Code extension that reads staged code changes and auto-generates properly formatted Git commit messages via a multi-step LangGraph + Gemini pipeline.</li>
+        <li>TypeScript extension layer bridges VS Code's UI to a Python backend — a full end-to-end tool spanning two languages.</li>
+      </ul>
+      <div class="tags"><span>LangGraph</span><span>Gemini</span><span>TypeScript</span><span>VS Code API</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>Temporal Deep Learning for Automated Video Quality Control</h3>
+      <ul>
+        <li>Deep learning pipeline inspired by Netflix's video QC that detects 1–3 pixel hot-pixel defects in 1280×720 frames using a Temporal U-Net trained entirely on synthetic data.</li>
+        <li>Temporal attention over 5 consecutive frames distinguishes real sensor defects from bright scene objects like specular highlights.</li>
+        <li>Custom loss (Focal + Dice + Temporal Consistency) plus hard negative mining to handle extreme class imbalance and cut false positives.</li>
+      </ul>
+      <div class="tags"><span>PyTorch</span><span>U-Net</span><span>OpenCV</span><span>SciPy</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>Dish-to-Grocery Recommendation System</h3>
+      <ul>
+        <li>NLP pipeline cleaned and normalized 62,000+ recipes and structured a 49,688-product grocery catalog as the recommendation corpus.</li>
+        <li>Embedded 15,955 dish tagsets and all products with Sentence Transformers, generating 159,550 cosine-similarity mappings at scale.</li>
+        <li>Hybrid Llama 3.3 70B + embedding recommender with frequency-recency ranking serves personalized top-20 grocery lists for 1,000 users.</li>
+      </ul>
+      <div class="tags"><span>Sentence Transformers</span><span>Llama 3.3</span><span>Scikit-learn</span><span>NLP</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>NCAA Men's Final Four Analytics Challenge</h3>
+      <ul>
+        <li>Gradient Boosting pipeline predicting NCAA Tournament seedings (1–68) on 1,300+ team-season records — RMSE of 1.29, securing 7th position on the Kaggle leaderboard.</li>
+        <li>Engineered 43 features from NET rankings, quadrant records, schedule strength, and conference tiers across 5 seasons.</li>
+        <li>5-fold out-of-fold ensemble with rank-constrained seed assignment for realistic, collision-free tournament seeds.</li>
+      </ul>
+      <div class="tags"><span>Gradient Boosting</span><span>Scikit-learn</span><span>Pandas</span><span>Kaggle</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>Customer Cohort Segmentation with CLV Prediction</h3>
+      <ul>
+        <li>SQL with window functions and self-joins across 37K invoices to compute RFM scores and cohort retention matrices; identified 677 dormant high-value customers invisible in standard revenue reports.</li>
+        <li>Gradient boosting CLV model on recency, frequency, and inter-purchase interval features; top 200 at-risk customers by predicted CLV accounted for 62% of total at-risk revenue.</li>
+        <li>Tableau Public dashboard with a cohort retention heatmap, CLV tier breakdown by acquisition channel, and an at-risk priority scatter plot for non-technical stakeholders.</li>
+      </ul>
+      <div class="tags"><span>SQL</span><span>Gradient Boosting</span><span>RFM Analysis</span><span>Tableau</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="ml">
+      <span class="cat">ML &amp; MLOps</span>
+      <h3>Checkout Flow Experiment Analysis: Bayesian Inference &amp; Hypothesis Testing</h3>
+      <ul>
+        <li>Dual-framework A/B test analysis (frequentist z-test + Bayesian Beta-Binomial) on 12K e-commerce sessions; frequentist returned p=0.19 while the Bayesian posterior yielded 90% probability the variant wins.</li>
+        <li>Modeled expected loss under the Bayesian posterior as a principled stopping rule — crossed the 0.0005 threshold at ~80% of data, enabling earlier stopping without inflating Type I error.</li>
+        <li>Pre-registered analysis plan with power analysis (80% power, α=0.05) and 3 guardrail metrics; session duration flagged a 6.5% degradation the conversion metric alone would have missed.</li>
+      </ul>
+      <div class="tags"><span>A/B Testing</span><span>Bayesian Inference</span><span>Hypothesis Testing</span><span>Python</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="de">
+      <span class="cat">Data Engineering</span>
+      <h3>Real-Time Data Pipeline: Amazon Product Reviews</h3>
+      <ul>
+        <li>Real-time pipeline processing Amazon product reviews with Kafka, Spark Structured Streaming, and Snowflake — sentiment analytics at sub-second latency.</li>
+        <li>Batch and streaming workflows orchestrated with Apache Airflow at 99% pipeline uptime.</li>
+        <li>Scalable streaming architecture handling 100–500 events/min with Docker, surfacing conversion-funnel and sentiment-trend insights.</li>
+      </ul>
+      <div class="tags"><span>Kafka</span><span>Spark Streaming</span><span>Snowflake</span><span>Airflow</span><span>Docker</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="de">
+      <span class="cat">Data Engineering</span>
+      <h3>Payment Analytics Pipeline</h3>
+      <ul>
+        <li>Real-time billing analytics pipeline with Kafka and ClickHouse continuously tracking MRR as subscriptions are created, upgraded, or canceled.</li>
+        <li>Stateful stream processing incrementally updates revenue metrics per event, eliminating expensive batch recomputation.</li>
+        <li>Simulated a full SaaS subscription lifecycle with synthetic multi-plan, multi-currency events to validate end-to-end data flow.</li>
+      </ul>
+      <div class="tags"><span>Kafka</span><span>ClickHouse</span><span>Flink</span><span>Spark</span><span>SQL</span></div>
+    </article>
+
+    <article class="card reveal" data-cat="de">
+      <span class="cat">Data Engineering</span>
+      <h3>Clickstream Data Pipeline</h3>
+      <ul>
+        <li>Batch pipeline ingesting 4M+ e-commerce events from MongoDB into BigQuery, transformed into an analytics-ready star schema via dbt with automated quality tests.</li>
+        <li>Three-layer medallion architecture on BigQuery with 5 production-grade fact and dimension tables optimized for BI consumption.</li>
+        <li>Power BI dashboard visualizing conversion funnels, session behavior, and item-performance trends across 250K+ sessions.</li>
+      </ul>
+      <div class="tags"><span>MongoDB</span><span>BigQuery</span><span>dbt</span><span>Power BI</span><span>ELT</span></div>
+    </article>
+
+  </div>
+</section>
+
+<section id="experience" class="wrap">
+  <h2 class="reveal"><span class="hash">#</span>Experience</h2>
+  <p class="sec-sub reveal">Research and industry work across AI, edge robotics, and data systems.</p>
+  <div class="xp">
+    <div class="xp-item reveal">
+      <div class="role">Research Assistant</div>
+      <div class="org">Irsay Institute, Indiana University · Bloomington, IN</div>
+      <div class="when">Jan 2026 – Present</div>
+      <ul>
+        <li>Built a facial age prediction pipeline using MiVOLO (ViT) for a healthcare aging study on 1,215 participants; ensembled MiVOLO, ArcFace, and DEX.</li>
+        <li>Applied GradCAM, attention rollout, and SHAP attribution to produce clinically interpretable saliency maps auditable against known aging biomarkers.</li>
+        <li>Automated end-to-end inference pipelines across participant subgroups with reproducible evaluation benchmarks.</li>
+      </ul>
+    </div>
+    <div class="xp-item reveal">
+      <div class="role">Research Assistant</div>
+      <div class="org">Luddy School, Indiana University · Bloomington, IN</div>
+      <div class="when">Jun 2025 – May 2026</div>
+      <ul>
+        <li>Engineered real-time multimodal AI (speech + vision) for Gigi, a 3D-printed social robot on Orange Pi ARM edge hardware with quantized on-device LLM inference.</li>
+        <li>Built adaptive face- and speaker-recognition with real-time database expansion supporting 100+ user profiles for personalized human-robot interaction.</li>
+        <li>Optimized on-device speech-to-text and text-to-speech under strict latency and memory budgets.</li>
+      </ul>
+    </div>
+    <div class="xp-item reveal">
+      <div class="role">Associate Software Engineer</div>
+      <div class="org">Insightsoftware · Bengaluru, India</div>
+      <div class="when">Jul 2023 – Aug 2024</div>
+      <ul>
+        <li>Built and optimized ODBC/JDBC Hadoop drivers in C++ and Java — the data-connectivity layer between BI tools and big-data clusters.</li>
+        <li>Integrated ARM support, SAML authentication, and SSL configurations; delivered releases via AWS and Jenkins CI/CD.</li>
+        <li>Q1 Best Performer Award for outstanding contributions.</li>
+      </ul>
+    </div>
+    <div class="xp-item reveal">
+      <div class="role">Software Engineer Intern</div>
+      <div class="org">Amadeus · Bengaluru, India</div>
+      <div class="when">Mar 2023 – Jun 2023</div>
+      <ul>
+        <li>Designed an automated deployment data pipeline with Jenkins, GitHub, and Kubernetes, replacing a slow manual process.</li>
+        <li>Engineered a reusable big-data validation framework in Python and Robot Framework, adopted across 5+ teams.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="wrap">
+  <h2 class="reveal"><span class="hash">#</span>Skills</h2>
+  <p class="sec-sub reveal">The stack I reach for.</p>
+  <div class="skill-groups">
+    <div class="skill-group reveal">
+      <h3>&gt; languages &amp; apis</h3>
+      <p>Python, SQL, JavaScript/TypeScript, C++, Java, Bash · OpenAI, Anthropic (Claude), Gemini, Together AI</p>
+    </div>
+    <div class="skill-group reveal">
+      <h3>&gt; llm &amp; genai</h3>
+      <p>LangChain, LangGraph, LlamaIndex, HuggingFace Transformers, PEFT, FAISS, ChromaDB · LoRA, QLoRA, SFT · DeepEval, LLM-as-judge, agent evaluation</p>
+    </div>
+    <div class="skill-group reveal">
+      <h3>&gt; ml &amp; modeling</h3>
+      <p>PyTorch, Scikit-learn, XGBoost/LightGBM, OpenCV · NLP, Computer Vision, Ensemble Methods, A/B Testing, SHAP interpretability</p>
+    </div>
+    <div class="skill-group reveal">
+      <h3>&gt; data engineering</h3>
+      <p>Airflow, Kafka, Spark (Structured Streaming), Flink, dbt · Snowflake, Databricks, BigQuery, ClickHouse, MongoDB · medallion &amp; star-schema modeling</p>
+    </div>
+    <div class="skill-group reveal">
+      <h3>&gt; cloud &amp; mlops</h3>
+      <p>AWS (EC2/Lambda/SageMaker), Azure, Docker, Kubernetes, GitHub Actions, Jenkins, MLflow, Prometheus, Grafana</p>
+    </div>
+    <div class="skill-group reveal">
+      <h3>&gt; viz &amp; certs</h3>
+      <p>Tableau, Power BI · DataCamp: AWS Services &amp; Concepts, MLOps Fundamentals, dbt Fundamentals</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="wrap">
+  <h2 class="reveal"><span class="hash">#</span>Education</h2>
+  <p class="sec-sub reveal">&nbsp;</p>
+  <div class="edu">
+    <div class="edu-item reveal">
+      <div class="deg">M.S. Data Science — Indiana University, Bloomington</div>
+      <div class="meta">Aug 2024 – May 2026 · GPA 3.9/4.0 · Applied ML, Advanced Databases, Data Visualization, High Performance Computing, RL for LLMs</div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="deg">B.Tech Information Science &amp; Engineering — University Visvesvaraya College of Engineering</div>
+      <div class="meta">2019 – 2023 · Bengaluru, India</div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2 class="reveal"><span class="hash">#</span>Get in Touch</h2>
+    <p class="reveal">Open to AI/ML engineering, data science, and data engineering opportunities.</p>
+    <div class="hero-links reveal" style="justify-content:center">
+      <a class="btn primary" href="mailto:gowtham.rdy2001@gmail.com">Email Me</a>
+      <a class="btn" href="https://github.com/gowthyreddy" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/gsanjamala" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <p class="foot-note">© 2026 · designed &amp; built by gowtham</p>
+  </div>
+</footer>
+
+<script>
+  // project filters
+  document.getElementById('filters').addEventListener('click', e => {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    document.querySelectorAll('#filters button').forEach(b => b.classList.toggle('active', b === btn));
+    const f = btn.dataset.f;
+    document.querySelectorAll('#projectGrid .card').forEach(c => {
+      c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+    });
+  });
+
+  // scroll reveal with stagger
+  const reveals = [...document.querySelectorAll('.reveal')];
+  function reveal() {
+    let i = 0;
+    reveals.forEach(el => {
+      if (el.classList.contains('in')) return;
+      if (el.getBoundingClientRect().top < innerHeight - 40) {
+        el.style.transitionDelay = (i++ % 6) * 60 + 'ms';
+        el.classList.add('in');
+      }
+    });
+  }
+  addEventListener('scroll', reveal, { passive: true });
+  addEventListener('resize', reveal, { passive: true });
+  reveal();
+
+  // card spotlight follows cursor
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+</script>
+
+</body>
+</html>
