@@ -242,42 +242,47 @@
   <p class="sub">Research and industry work across AI, edge robotics, and data systems.</p>
   <div class="xp">
     <div class="xp-item">
-      <div class="role">Research Assistant</div>
-      <div class="org">Irsay Institute, Indiana University · Bloomington, IN</div>
-      <div class="when">Jan 2026 – Present</div>
+      <div class="role">Research Assistant — Irsay Institute</div>
+      <div class="org">Indiana University · Bloomington, IN</div>
+      <div class="when">Jan 2026 – Present · Remote</div>
       <ul>
-        <li>Built a facial age prediction pipeline using MiVOLO (ViT) for a healthcare aging study on 1,215 participants; ensembled MiVOLO, ArcFace, and DEX.</li>
-        <li>Applied GradCAM, attention rollout, and SHAP attribution to produce clinically interpretable saliency maps auditable against known aging biomarkers.</li>
-        <li>Automated end-to-end inference pipelines across participant subgroups with reproducible evaluation benchmarks.</li>
+        <li>Built an end-to-end computer vision inference pipeline in Python and PyTorch for a 1,215-participant healthcare aging study, automating image preprocessing, model prediction, and structured output generation across participant subgroups.</li>
+        <li>Benchmarked single-model vs. ensemble approaches (MiVOLO Vision Transformer, ArcFace, DEX), evaluating trade-offs between MAE and residualized correlation against clinical epigenetic biomarkers.</li>
+        <li>Designed residualized correlation analyses controlling for confounding variables to isolate true model signal, comparing R² across model configurations to identify the strongest predictor.</li>
+        <li>Applied SHAP, GradCAM, and attention rollout to interpret ViT predictions and surface the facial regions driving each output, making model behavior auditable to clinical stakeholders.</li>
       </ul>
     </div>
     <div class="xp-item">
-      <div class="role">Research Assistant</div>
-      <div class="org">Luddy School, Indiana University · Bloomington, IN</div>
-      <div class="when">Jun 2025 – May 2026</div>
+      <div class="role">Research Assistant — Luddy School of Informatics</div>
+      <div class="org">Indiana University · Bloomington, IN</div>
+      <div class="when">Jun 2025 – May 2026 · On-site</div>
       <ul>
-        <li>Engineered real-time multimodal AI (speech + vision) for Gigi, a 3D-printed social robot on Orange Pi ARM edge hardware with quantized on-device LLM inference.</li>
-        <li>Built adaptive face- and speaker-recognition with real-time database expansion supporting 100+ user profiles for personalized human-robot interaction.</li>
-        <li>Optimized on-device speech-to-text and text-to-speech under strict latency and memory budgets.</li>
+        <li>Architected the AI system behind Gigi, an affordable 3D-printed social robot for classroom use, enabling continuous conversational interaction driven by speech, hand gestures, and facial expression — running fully on-device on ARM hardware (Orange Pi) with no cloud dependency.</li>
+        <li>Built a RAG pipeline that grounds the robot's responses in lesson content, keeping the conversation on-topic while adapting feedback to each student's answer for encouraging, contextually appropriate responses.</li>
+        <li>Ran LLM inference locally via self-hosted Ollama on ARM hardware, meeting real-time latency targets on a sub-$200 single-board computer under strict memory constraints.</li>
+        <li>Deployed HuggingFace vision and speech models optimized to ONNX for real-time on-device inference on Linux, powering face detection, facial-expression analysis, and gesture recognition as live inputs to conversational behavior.</li>
+        <li>Built adaptive face and speaker recognition with real-time database expansion supporting 100+ user profiles, enabling personalized interaction across returning students.</li>
       </ul>
     </div>
     <div class="xp-item">
       <div class="role">Associate Software Engineer</div>
-      <div class="org">Insightsoftware · Bengaluru, India</div>
-      <div class="when">Jul 2023 – Aug 2024</div>
+      <div class="org">insightsoftware · Bengaluru, Karnataka, India</div>
+      <div class="when">Aug 2023 – Aug 2024 · Remote</div>
       <ul>
-        <li>Built and optimized ODBC/JDBC Hadoop drivers in C++ and Java — the data-connectivity layer between BI tools and big-data clusters.</li>
-        <li>Integrated ARM support, SAML authentication, and SSL configurations; delivered releases via AWS and Jenkins CI/CD.</li>
-        <li>Q1 Best Performer Award for outstanding contributions.</li>
+        <li>Built and optimized ODBC and JDBC Hadoop drivers in C++ and Java — the data-connectivity layer between BI tools and big-data clusters — shipping new features and resolving production defects for enterprise customers.</li>
+        <li>Diagnosed and fixed authentication and secure-connectivity defects across the driver stack, including SSL/TLS certificate validation, trust store handling, and LDAP-based authentication flows.</li>
+        <li>Profiled and resolved performance bottlenecks in query execution and data-retrieval paths, improving driver throughput and responsiveness under production workloads.</li>
+        <li>Integrated ARM architecture support and validated drivers across Bash, Docker, and Linux; delivered releases through AWS and Jenkins CI/CD — Q1 Best Performer Award.</li>
       </ul>
     </div>
     <div class="xp-item">
-      <div class="role">Software Engineer Intern</div>
-      <div class="org">Amadeus · Bengaluru, India</div>
-      <div class="when">Mar 2023 – Jun 2023</div>
+      <div class="role">SDE Intern</div>
+      <div class="org">Amadeus · Bengaluru, Karnataka, India</div>
+      <div class="when">Mar 2023 – Jul 2023</div>
       <ul>
-        <li>Designed an automated deployment data pipeline with Jenkins, GitHub, and Kubernetes, replacing a slow manual process.</li>
+        <li>Designed an automated deployment data pipeline using Jenkins, GitHub, and Kubernetes to prepare and validate big data, replacing a slow manual process.</li>
         <li>Engineered a reusable big-data validation framework in Python and Robot Framework, adopted across 5+ teams.</li>
+        <li>Worked with Azure Databricks for data warehousing and cloud-based data processing.</li>
       </ul>
     </div>
   </div>
