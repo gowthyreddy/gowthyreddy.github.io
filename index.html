@@ -72,15 +72,40 @@
   }
   .cursor.done { animation: blink 1.1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
+  header .role {
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem); font-weight: 700; color: var(--text);
+    letter-spacing: -0.02em; margin-top: 8px;
+    opacity: 0; animation: fadeUp .7s ease .12s forwards;
+  }
+  header .role .accent { color: var(--accent); }
   header .about {
     max-width: 620px; margin: 30px auto 0; font-size: 1.22rem; color: var(--muted);
     font-weight: 400; line-height: 1.55; letter-spacing: -0.015em;
     opacity: 0; animation: fadeUp .8s ease .2s forwards;
   }
   header .about b { color: var(--text); font-weight: 600; }
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 22px;
+    font-size: .92rem; font-weight: 500; color: var(--accent);
+    background: #eaf3fe; border-radius: 980px; padding: 8px 18px;
+    opacity: 0; animation: fadeUp .8s ease .28s forwards;
+  }
+  .status-pill .dot {
+    width: 8px; height: 8px; border-radius: 50%; background: #34c759; flex-shrink: 0;
+  }
   .hero-links {
     margin-top: 38px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
     opacity: 0; animation: fadeUp .8s ease .35s forwards;
+  }
+  .hero-stats {
+    margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    text-align: left; opacity: 0; animation: fadeUp .8s ease .42s forwards;
+  }
+  .hero-stats .stat { padding: 24px; }
+  .hero-stats .num { font-size: 1.9rem; font-weight: 800; color: var(--accent); letter-spacing: -0.02em; }
+  .hero-stats .label { color: var(--muted); font-size: .92rem; margin-top: 6px; }
+  @media (max-width: 640px) {
+    .hero-stats { grid-template-columns: 1fr; }
   }
   .btn {
     display: inline-block; padding: 11px 24px; border-radius: 980px;
@@ -117,8 +142,7 @@
   .panel { display: none; padding: 60px 28px 90px; }
   .panel.active { display: block; animation: panelIn .45s ease; }
   @keyframes panelIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-  .panel h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 6px; }
-  .panel .sub { color: var(--faint); font-size: 1rem; margin-bottom: 40px; }
+  .panel h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 34px; }
 
   /* ---- projects ---- */
   .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 34px; }
@@ -236,10 +260,17 @@
 
 <header class="wrap">
   <h1><span class="type-target" id="typeTarget">I'm Gowtham Reddy Sanjamala</span><span class="cursor" id="cursor"></span></h1>
-  <p class="about">I like the whole arc — from moving the data to shipping the system that acts on it. In practice, that work spans <b>data pipelines</b>, <b>recommendation and predictive models</b>, <b>statistical experimentation</b>, <b>LLM agents</b>, and the <b>MLOps</b> to keep them all running in production. M.S. in Data Science from <b>Indiana University</b> (GPA 3.9).</p>
+  <p class="role">AI/ML Engineer. <span class="accent">AI Enthusiast.</span></p>
+  <p class="about">Not just models in notebooks — real pipelines, real evals, real production systems. I graduated from <b>Indiana University</b> with an M.S. in Data Science, and I'm looking for full-time roles in Data Science, AI Engineering, and ML.</p>
+  <div class="status-pill"><span class="dot"></span> Available now · Data Scientist / AI Engineer / ML Engineer / Data Engineer</div>
   <div class="hero-links">
     <a class="btn ghost" href="https://github.com/gowthyreddy" target="_blank" rel="noopener">GitHub</a>
     <a class="btn ghost" href="https://www.linkedin.com/in/gsanjamala" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat card"><div class="num">36 Months</div><div class="label">Work Experience<br>Across RA, Internship and Full time</div></div>
+    <div class="stat card"><div class="num">3.9 GPA</div><div class="label">Masters in Data Science at Indiana University</div></div>
+    <div class="stat card"><div class="num">2 Research Assistantships</div><div class="label">Research Contributions</div></div>
   </div>
 </header>
 
@@ -255,12 +286,11 @@
 <!-- ===== WORK ===== -->
 <section class="panel active wrap" id="work">
   <h2>Experience</h2>
-  <p class="sub">Research and industry work across AI, edge robotics, and data systems.</p>
   <div class="xp">
     <div class="xp-item">
-      <div class="role">Data Scientist — Irsay Institute</div>
-      <div class="org">Indiana University · Bloomington, IN</div>
-      <div class="when">Jan 2026 – Present · Remote</div>
+      <div class="role">Data Scientist (RA) — Irsay Institute</div>
+      <div class="org">Indiana University</div>
+      <div class="when">Jun 2026 – Present</div>
       <ul>
         <li>Investigated whether facial apparent age predicts biological aging (4 epigenetic clocks) beyond chronological age, across 3 photo models and 1,110 subjects.</li>
         <li>Cleaned and preprocessed multi-source data (facial images, epigenetic clock values, demographic/clinical variables) — merging participant records across files, handling missing values, and residualizing photo and clock measures against chronological age to remove confounded age signal before analysis.</li>
@@ -269,9 +299,9 @@
       </ul>
     </div>
     <div class="xp-item">
-      <div class="role">Robotics AI Engineer — Luddy School of Informatics</div>
-      <div class="org">Indiana University · Bloomington, IN</div>
-      <div class="when">Jun 2025 – May 2026 · On-site</div>
+      <div class="role">AI/ML Engineer (RA) — Luddy School of Informatics</div>
+      <div class="org">Indiana University</div>
+      <div class="when">Jun 2025 – May 2026</div>
       <ul>
         <li>Architected the AI system behind Gigi, an affordable 3D-printed social robot for classroom use, enabling continuous conversational interaction driven by speech, hand gestures, and facial expression — running fully on-device on ARM hardware (Orange Pi) with no cloud dependency.</li>
         <li>Built a RAG pipeline that grounds the robot's responses in lesson content, keeping the conversation on-topic while adapting feedback to each student's answer for encouraging, contextually appropriate responses.</li>
@@ -281,9 +311,9 @@
       </ul>
     </div>
     <div class="xp-item">
-      <div class="role">Associate Software Engineer</div>
-      <div class="org">insightsoftware · Bengaluru, Karnataka, India</div>
-      <div class="when">Aug 2023 – Aug 2024 · Remote</div>
+      <div class="role">Software Engineer</div>
+      <div class="org">Insightsoftware</div>
+      <div class="when">Aug 2023 – Aug 2024</div>
       <ul>
         <li>Built and optimized ODBC and JDBC Hadoop drivers in C++ and Java — the data-connectivity layer between BI tools and big-data clusters — shipping new features and resolving production defects for enterprise customers.</li>
         <li>Diagnosed and fixed authentication and secure-connectivity defects across the driver stack, including SSL/TLS certificate validation, trust store handling, and LDAP-based authentication flows.</li>
@@ -293,7 +323,7 @@
     </div>
     <div class="xp-item">
       <div class="role">Data Engineer Intern</div>
-      <div class="org">Amadeus · Bengaluru, Karnataka, India</div>
+      <div class="org">Amadeus</div>
       <div class="when">Mar 2023 – Jul 2023</div>
       <ul>
         <li>Designed an automated deployment data pipeline using Jenkins, GitHub, and Kubernetes to prepare and validate big data, replacing a slow manual process.</li>
@@ -307,7 +337,6 @@
 <!-- ===== EDUCATION ===== -->
 <section class="panel wrap" id="education">
   <h2>Education</h2>
-  <p class="sub">Graduate and undergraduate studies.</p>
   <div class="edu">
     <div class="edu-item">
       <div class="top">
@@ -331,7 +360,6 @@
 <!-- ===== PROJECTS ===== -->
 <section class="panel wrap" id="projects">
   <h2>Projects</h2>
-  <p class="sub">9 projects across LLM engineering, production ML, analytics, and data pipelines.</p>
   <div class="filters" id="filters">
     <button class="active" data-f="all">All</button>
     <button data-f="llm">LLM &amp; GenAI</button>
@@ -454,7 +482,6 @@
 <!-- ===== SKILLS ===== -->
 <section class="panel wrap" id="skills">
   <h2>Skills</h2>
-  <p class="sub">The stack I reach for.</p>
   <div class="skill-groups">
     <div class="skill-group">
       <h3>Languages &amp; APIs</h3>
